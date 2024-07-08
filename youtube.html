@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        /* .play { 
+            background: red;
+            border: none;
+            border-radius: 43% / 12%;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            height: 23px; 
+            width: 38px; 
+            padding: 0;
+            position: relative;
+            transition: background 150ms ease-out;
+        }
+        .play::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 0 5px 8px; 
+            border-color: transparent transparent transparent rgba(255, 255, 255, 0.9);
+        } */
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+        }
+        .search-bar {
+            width: 400px;
+            height: 35px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            font-size: 15px;
+            padding-left: 15px;
+            outline: none;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .youtube-logo {
+            display: flex;
+            align-items: center;
+            width: 180px; /* Adjusted size */
+            height: 60px; /* Adjusted size */
+        }
+        .youtube-logo svg {
+            width: 100%; /* Scale SVG to fit the container */
+            height: auto;
+        }
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .video-preview {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 10px;
+            overflow: hidden;
+            width: 300px;
+        }
+        .thumbnails {
+            width: 100%;
+        }
+        .video-info {
+            padding: 15px;
+        }
+        .video-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0;
+        }
+        .video-author, .video-views {
+            font-size: 14px;
+            color: #555;
+            margin: 3px 0;
+        }
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <!-- <button class="play"></button> -->
+            <div class="youtube-logo">
+                <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                    <!-- YouTube play button -->
+                    <g transform="translate(0, 10)">
+                      <path d="M27.9704 3.12324C27.6411 1.89323 26.6745 0.926623 25.4445 0.597366C23.2173 2.24288e-07 14.2827 0 14.2827 0C14.2827 0 5.34807 2.24288e-07 3.12088 0.597366C1.89323 0.926623 0.924271 1.89323 0.595014 3.12324C-2.8036e-07 5.35042 0 10 0 10C0 10 -1.57002e-06 14.6496 0.597364 16.8768C0.926621 18.1068 1.89323 19.0734 3.12324 19.4026C5.35042 20 14.285 20 14.285 20C14.285 20 23.2197 20 25.4468 19.4026C26.6769 19.0734 27.6435 18.1068 27.9727 16.8768C28.5701 14.6496 28.5701 10 28.5701 10C28.5701 10 28.5677 5.35042 27.9704 3.12324Z" fill="red"></path>
+                      <polygon points="11,6 19,10 11,14" fill="white"></polygon>
+                    </g>
+                    <!-- "YouTube" text -->
+                    <text x="35" y="25" font-family="Arial, sans-serif" font-size="20" fill="black" font-weight="bold">YouTube</text>
+                  </svg>
+            </div>
+            <div class="search-bar-container">
+                <input class="search-bar" type="text" placeholder="Search">
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="video-grid">
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=n2RNcPRtAiY">
+                    <img class="thumbnails" src="thumbnails/thumbnail-1.webp" alt="Talking AI with Sundar Pichai">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">Talking AI with Sundar Pichai</p>
+                    <p class="video-author">Marcus Brownlee</p>
+                    <p class="video-views">2.3M views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=mP0RAo9SKZk&list=PLk-Aie3BcOSTNjOB7b1a6wDpX86JEkhBH&index=8">
+                    <img class="thumbnails" src="thumbnails/thumbnail-2.webp" alt="Try Not to Laugh Challenge 8">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">Try Not to Laugh Challenge 8</p>
+                    <p class="video-author">Markiplier</p>
+                    <p class="video-views">18M views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=FgjPQQeTh1w">
+                    <img class="thumbnails" src="thumbnails/thumbnail-3.webp" alt="Crazy Tiktok Taken Moments before Disaster">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">Crazy Tiktok Taken Moments before Disaster</p>
+                    <p class="video-author">SSSniperWolf</p>
+                    <p class="video-views">14M views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=video-4">
+                    <img class="thumbnails" src="thumbnails/thumbnail-4.webp" alt="Welcome to Algebra class 101">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">Welcome to Algebra class 101</p>
+                    <p class="video-author">MathTutor</p>
+                    <p class="video-views">966k views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=video-5">
+                    <img class="thumbnails" src="thumbnails/thumbnail-5.webp" alt="Kadane's Algorithm">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">Kadane's Algorithm</p>
+                    <p class="video-author">yourscienceteacher</p>
+                    <p class="video-views">1.8M views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=video-6">
+                    <img class="thumbnails" src="thumbnails/thumbnail-6.webp" alt="Anything you Fit in the Circle I Pay for">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">Anything you Fit in the Circle I Pay for</p>
+                    <p class="video-author">MrBeast</p>
+                    <p class="video-views">60M views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=video-7">
+                    <img class="thumbnails" src="thumbnails/thumbnail-7.webp" alt="What is China doing in Tibet">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">What is China doing in Tibet</p>
+                    <p class="video-author">World History</p>
+                    <p class="video-views">2.5M views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=video-8">
+                    <img class="thumbnails" src="thumbnails/thumbnail-8.webp" alt="First Class Flying Experience">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">First Class Flying Experience</p>
+                    <p class="video-author">Emirates</p>
+                    <p class="video-views">18M views</p>
+                </div>
+            </div>
+            <div class="video-preview">
+                <a href="https://www.youtube.com/watch?v=video-9">
+                    <img class="thumbnails" src="thumbnails/thumbnail-9.webp" alt="Build Muscle without Dumbbells - Calisthenics">
+                </a>
+                <div class="video-info">
+                    <p class="video-title">Build Muscle without Dumbbells - Calisthenics</p>
+                    <p class="video-author">Calisthenics</p>
+                    <p class="video-views">12M views</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        © 2024 YouTube Clone. All rights reserved.
+    </footer>
+</body>
+</html>
